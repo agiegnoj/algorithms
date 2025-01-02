@@ -3,7 +3,7 @@
 using namespace std;
 template <typename T>
 
-class MaximumSquareWithinMatrix{
+class MaximumSquareArea{
     public: 
 
     vector<vector<int>> maxSquareCoordinates(vector<vector<T>> matrix, T squareComponent){
