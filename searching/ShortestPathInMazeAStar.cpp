@@ -103,38 +103,3 @@ class ShortestPathInMazeAStar{
 };
 
 
-int main() {
-    // Test case 1
-    vector<vector<int>> maze = {
-        {0, 0, 0, 0, 0},
-        {0, 1, 1, 1, 0},
-        {0, 0, 0, 1, 0},
-        {0, 1, 0, 0, 0},
-        {0, 0, 0, 0, 0}
-    };
-
-    int blockingObject = 1; // 1 represents a blocking object (obstacle)
-    int startX = 0, startY = 0;
-    int destX = 4, destY = 4;
-
-    // Create an instance of the ShortestPathInMazeBFS class
-    ShortestPathInMazeAStar<int> solver(maze, blockingObject, startX, destX, startY, destY);
-
-    // Get the shortest path
-    vector<pair<int, int>> path = solver.getShortestPath();
-    long pathLength = solver.getShortestPathLength();
-
-    // Output the result
-    cout << "Shortest Path Length: " << pathLength << endl;
-    if (pathLength != -1) {
-        cout << "Path: ";
-        for (auto& p : path) {
-            cout << "(" << p.first << "," << p.second << ") ";
-        }
-        cout << endl;
-    } else {
-        cout << "No path found." << endl;
-    }
-
-    return 0;
-}
