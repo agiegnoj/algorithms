@@ -6,7 +6,6 @@
 
 using namespace std;
 
-template <typename T>
 
 
 class Primes{
@@ -58,9 +57,9 @@ class Primes{
 
     }
 
-    vector<long> primeSieveErathosthenes(T max){
+    vector<long> primeSieveErathosthenes(long max){
         vector<bool> isPrime (max+1, true);
-        vector<T> primes;
+        vector<long> primes;
 
         isPrime [0] = false;
         isPrime[1] = false;
