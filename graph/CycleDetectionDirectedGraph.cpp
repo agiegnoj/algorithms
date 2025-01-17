@@ -37,6 +37,17 @@ public:
         return cycles;
     }
 
+vector<int> getLargestCycle(vector<vector<int>> graph, int src){
+        set<vector<int>> cycles = getCycles(graph);
+        if (cycles.size() == 0) return {};
+        vector<int> maxCycle = {};
+        for (vector<int> cycle : cycles){
+            if (cycle.size() > maxCycle.size())
+            maxCycle = cycle;
+        }
+        return maxCycle;
+    }
+
 private:
     bool dfsUtilOne(int current, const vector<vector<int>>& graph, unordered_set<int>& visited, unordered_set<int>& finished) {
         if (visited.count(current)) {
