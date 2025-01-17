@@ -37,7 +37,7 @@ public:
         return cycles;
     }
 
-vector<int> getLargestCycle(vector<vector<int>> graph, int src){
+vector<int> getLargestCycle(vector<vector<int>> graph){
         set<vector<int>> cycles = getCycles(graph);
         if (cycles.size() == 0) return {};
         vector<int> maxCycle = {};
