@@ -5,8 +5,6 @@ template <typename T>
 class Floyd{
     public: 
 
-
-
     bool hasCycle(vector<pair<int,T>>& successorGraph, int start){ //<pointer, data>
         int slow = start;
         int fast = start;
