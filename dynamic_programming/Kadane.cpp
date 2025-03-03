@@ -32,6 +32,8 @@ class Kadane{
 
     T maxSumSubarray(vector <T> nums){
 
+        static_assert(std::is_arithmetic<T>::value, "Type T must be arithmetic.");
+
         if (nums.size() == 0) return 0;
         
            T currentMax = nums[0];
