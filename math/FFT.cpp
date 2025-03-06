@@ -77,7 +77,42 @@ void fft(vector<cd>& p, bool inverse) {
             result[i] = round(temp[i].real());
         }
 
-        while (result.back() == 0){
+        while (!result.empty() && result.back() == 0){
+            result.pop_back();
+        }
+
+        return result;
+    }
+
+    vector<int> multiply(vector<int>& p1, vector<int>& p2) {
+        vector<cd> a(p1.begin(), p1.end()), b(p2.begin(), p2.end());
+
+        int size = 1;
+        while (size < a.size() + b.size()) {
+            size *= 2;
+        }
+
+        a.resize(size);
+        b.resize(size);
+
+        fft(a, false);
+        fft(b, false);
+
+        vector<cd> temp(size);
+
+        for (int i = 0; i < size; i++) {
+            temp[i] = a[i] * b[i];
+        }
+
+        fft(temp, true);
+
+        vector<int> result(size);
+
+        for (int i = 0; i < size; i++) {
+            result[i] = round(temp[i].real());
+        }
+
+        while (!result.empty() && result.back() == 0){
             result.pop_back();
         }
 
@@ -114,10 +149,9 @@ void fft(vector<cd>& p, bool inverse) {
             result[i] = temp[i].real();
         }
 
-        while (result.back() == 0.0){
+        while (!result.empty() && fabs(result.back()) < 1e-9){
             result.pop_back();
         }
-
 
         return result;
     }
