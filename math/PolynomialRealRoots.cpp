@@ -193,28 +193,3 @@ class PolynomialRealRoots{
     }
     };
     
-
-
-    int main() {
-        PolynomialRealRoots<double> poly;
-    
-        // Define several polynomials for testing
-        vector<double> p = 
-            {-2, 0, 1, 1.5};    
-    
-        vector<double> res = poly.rootsProbabilistic(p);
-         
-        // Print the roots
-        cout << "Found roots: ";
-        for (double r : res){
-            cout << r;
-            cout<< "(eval:) ";
-            cout<< poly.evaluate(p, r);
-            cout << ", ";
-
-        }
-
-        cout << endl << endl;
-     
-        return 0;
-    }
