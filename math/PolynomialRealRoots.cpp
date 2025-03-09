@@ -73,14 +73,14 @@ class PolynomialRealRoots{
             guesses.push_back(dis(gen));
         }
 
+        vector<T> firstDer = derivative(p);
+        vector<T> secDer = derivative(firstDer);
+
         for (T x : guesses){
             for (int i = 0; i < depth; i++){
                 if (abs((evaluate(p, x)))<epsilon){
                     return x;
                 }
-
-                vector<T> firstDer = derivative(p);
-                vector<T> secDer = derivative(firstDer);
 
                 T eval = evaluate (p, x);
 
@@ -109,6 +109,8 @@ class PolynomialRealRoots{
         const int depth = 100;
         vector<T> guesses;
 
+        vector<T> der = derivative(p);
+
         int degree = p.size()-1;
 
         for (int i = 0; i < 5; i++){
@@ -122,7 +124,7 @@ class PolynomialRealRoots{
                 if (abs(evaluate(p, x)) < epsilon)
                 return x;
 
-            T den = evaluate(derivative(p), x);
+            T den = evaluate(der, x);
             if (den != 0){
                 x = x - evaluate(p, x)/ den;
             }else{
@@ -192,3 +194,27 @@ class PolynomialRealRoots{
     };
     
 
+
+    int main() {
+        PolynomialRealRoots<double> poly;
+    
+        // Define several polynomials for testing
+        vector<double> p = 
+            {-2, 0, 1, 1.5};    
+    
+        vector<double> res = poly.rootsProbabilistic(p);
+         
+        // Print the roots
+        cout << "Found roots: ";
+        for (double r : res){
+            cout << r;
+            cout<< "(eval:) ";
+            cout<< poly.evaluate(p, r);
+            cout << ", ";
+
+        }
+
+        cout << endl << endl;
+     
+        return 0;
+    }
