@@ -61,12 +61,11 @@ class Primes{
         vector<bool> isPrime (max+1, true);
         vector<long> primes;
 
-        isPrime [0] = false;
-        isPrime[1] = false;
-
         for (int i = 2; i<= sqrt(max); i++){
-            for (int j = i*i;  j<= max; j+= i){
-                isPrime[j] = false;
+            if (isPrime[i]){
+                 for (int j = i*i;  j<= max; j+= i){
+                 isPrime[j] = false;
+            } 
             }
         }
 
