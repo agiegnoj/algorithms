@@ -9,7 +9,7 @@ class QuickSort{
 
     public :
 
-    void quickSort(std::vector<T>& arr, int start, int end, int (*compare)(T, T)) {
+    void quickSort(vector<T>& arr, int start, int end, int (*compare)(T, T)) {
         if (arr.size() == 0 || start >= end)
             return;
     
