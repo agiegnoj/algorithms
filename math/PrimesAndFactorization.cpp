@@ -187,49 +187,7 @@ class PrimesAndFactorization{
         return factors;
     }
 
-
-    vector<pair<long, long>> goldbachPairs(long long  num){
-        if (num %2 ==1 || num < 2)return {};
-        vector<pair<long, long>> goldbachPairs;
-
-        vector<long long> primes = primeSieveErathosthenes(num-2);
-        unordered_set<long long > used;
-
-        for (int i = 0; i< primes.size(); i++){
-            if (used.find(primes[i]) != used.end()) continue;
-
-            long long diff = num-primes[i];
-            if (binarySearch(primes, diff)){
-                used.insert(diff);
-                used.insert(primes[i]);
-                goldbachPairs.push_back({primes[i], diff });
-            }
-        }
-
-        return goldbachPairs;
-    }
-
-
     private :
-
-    bool binarySearch(const vector<long long>& primes, long long target){
-        int left = 0; 
-        int right = primes.size()-1;
-
-        while (left <= right){
-            int mid = left + (right-left)/2;
-            if (primes[mid] == target)
-            return true;
-
-            else if (primes[mid] < target)
-            left = mid+1;
-
-            else right = mid-1;
-        }
-
-        return false;
-    }
-
 
     long long powModM(long long base, long long exp, long long mod){
         base = base%mod;
