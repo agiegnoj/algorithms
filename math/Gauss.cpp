@@ -137,24 +137,4 @@ class Gauss{
     }
 };
 
-template <typename T>
 
-vector<vector<T>> multiply(const vector<vector<T>>& m1, const vector<vector<T>>& m2) {
-    if (m1[0].size() != m2.size())
-    throw invalid_argument("Matrices are not valid.");
-
-    int r = m1.size();
-    int c = m2[0].size();
-    int a = m2.size();  
-
-    vector<vector<T>> res(r, vector<T>(c, 0));
-
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            for (int l = 0; l < a; l++) {
-                res[i][j] += m1[i][l] * m2[l][j];
-            }
-        }
-    }
-    return res;
-}
